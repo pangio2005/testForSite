@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OpenOrbit — Mobile</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #030713;
+  --accent-blue: #62d1ff;
+  --accent-red: #ff4e58;
+  --text: #e9eef9;
+  --muted: #9fb0d2;
+}
+
+/* RESET & BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* BACKGROUND EFFECTS */
+.aurora {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% 10%, rgba(0,255,240,.15), rgba(255,0,150,.1), transparent 70%);
+  animation: auroraMove 14s ease-in-out infinite alternate;
+  z-index: -1;
+}
+@keyframes auroraMove {
+  from { transform: translateY(0); opacity: 0.6; }
+  to { transform: translateY(-25px) rotate(2deg); opacity: 0.9; }
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 4rem 1rem 2.5rem;
+  position: relative;
+}
+header h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.3rem;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(98,209,255,0.5);
+}
+header p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-top: .7rem;
+  line-height: 1.6;
+  max-width: 95%;
+  margin-inline: auto;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: .4rem .8rem;
+  border-radius: 999px;
+  font-size: .85rem;
+  background: rgba(255,255,255,0.05);
+}
+.nav a:hover { background: rgba(255,255,255,0.1); }
+
+/* SECTIONS */
+section {
+  padding: 2.5rem 1.2rem;
+  text-align: left;
+}
+section h2 {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--accent-blue);
+  font-size: 1.3rem;
+  margin-bottom: .7rem;
+}
+section p {
+  font-size: .95rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* CARDS */
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.card h3 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: .3rem;
+}
+.card p {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* FLOWCHART */
+.flow-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1.5rem;
+}
+.flow {
+  width: 850px;
+  height: 400px;
+}
+.node text {
+  font-size: 11px;
+  fill: #fff;
+}
+.node circle {
+  fill: rgba(15,30,50,.8);
+  stroke: #62d1ff;
+  stroke-width: 1.5px;
+}
+.link {
+  fill: none;
+  stroke: rgba(255,255,255,0.3);
+  stroke-width: 1.6px;
+  stroke-dasharray: 4 4;
+  animation: dash 8s linear infinite;
+}
+@keyframes dash { to { stroke-dashoffset: -200; } }
+
+/* QR */
+.qr {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+#qrcode canvas {
+  margin-top: .8rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(98,209,255,0.3);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: .8rem;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+footer::after {
+  content: "🍁";
+  display: block;
+  font-size: 3rem;
+  opacity: 0.05;
+  margin-top: .5rem;
+}
+
+/* MOBILE SPECIFIC */
+@media (min-width: 600px) {
+  header h1 { font-size: 2.8rem; }
+  section h2 { font-size: 1.6rem; }
+  p { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+<div class="aurora"></div>
+
+<header>
+  <h1>OpenOrbit</h1>
+  <p>Canada’s gateway to low Earth orbit data.  
+  A shared network transforming space data into accessible insight.</p>
+  <nav class="nav">
+    <a href="#exec">Summary</a>
+    <a href="#network">Flow</a>
+    <a href="#impact">Impact</a>
+    <a href="#qr">Share</a>
+  </nav>
+</header>
+
+<section id="exec">
+  <h2>Executive Summary</h2>
+  <p>OpenOrbit unites public and private sectors to democratize LEO data access. Through shared satellites, peer ground stations, and open APIs, it converts fragmented data into a scalable network that reduces cost and increases global coverage.</p>
+</section>
+
+<section id="network">
+  <h2>Network Flow</h2>
+  <p>The cooperative model works as follows:</p>
+
+  <div class="flow-wrap">
+    <svg class="flow" viewBox="0 0 800 400">
+      <!-- OpenOrbit -->
+      <g class="node" transform="translate(400,60)">
+        <circle r="40"></circle>
+        <text text-anchor="middle" y="4">OpenOrbit</text>
+      </g>
+
+      <!-- Large Companies -->
+      <g class="node" transform="translate(200,180)">
+        <circle r="35" stroke="#ff4e58"></circle>
+        <text text-anchor="middle" y="4">Large Companies</text>
+      </g>
+
+      <!-- Data Interface -->
+      <g class="node" transform="translate(600,180)">
+        <circle r="35" stroke="#62d1ff"></circle>
+        <text text-anchor="middle" y="4">Data Interface</text>
+      </g>
+
+      <!-- Satellite Centers -->
+      <g class="node" transform="translate(350,300)">
+        <circle r="35" stroke="#dfe6ff"></circle>
+        <text text-anchor="middle" y="4">Satellites & DC</text>
+      </g>
+
+      <!-- Small Companies -->
+      <g class="node" transform="translate(700,300)">
+        <circle r="30" stroke="#b6ffdf"></circle>
+        <text text-anchor="middle" y="4">Small Companies</text>
+      </g>
+
+      <!-- Links -->
+      <path class="link" d="M400,100 C340,140 260,160 220,170" />
+      <path class="link" d="M230,190 C340,180 460,170 590,180" />
+      <path class="link" d="M230,200 C300,240 320,260 350,280" />
+      <path class="link" d="M370,300 C450,280 520,240 580,200" />
+      <path class="link" d="M620,200 C650,230 680,260 695,280" />
+    </svg>
+  </div>
+</section>
+
+<section id="impact">
+  <h2>Global Impact</h2>
+  <div class="grid">
+    <div class="card"><h3>Climate</h3><p>Tracks ice, ocean, and emissions for data-driven climate resilience.</p></div>
+    <div class="card"><h3>Agriculture</h3><p>Monitors soil and crop growth for sustainability and yield prediction.</p></div>
+    <div class="card"><h3>Energy</h3><p>Maps mining and renewables infrastructure to cut emissions.</p></div>
+    <div class="card"><h3>Urban</h3><p>Supports smart routing, risk detection, and urban planning.</p></div>
+  </div>
+</section>
+
+<section id="qr">
+  <h2>Share OpenOrbit</h2>
+  <div class="qr">
+    <div id="qrcode"></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 OpenOrbit — Built in Canada 🇨🇦
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true });
+
+// QR generator for current URL
+new QRCode(document.getElementById("qrcode"), {
+  text: window.location.href,
+  width: 120,
+  height: 120,
+  colorDark: "#ffffff",
+  colorLight: "transparent",
+  correctLevel: QRCode.CorrectLevel.H
+});
+</script>
+</body>
+</html>
