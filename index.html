@@ -3,212 +3,148 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>OpenOrbit — Canada’s Cooperative LEO Data Network</title>
+<title>OpenOrbit — Canada's Cooperative LEO Data Network</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
 <style>
-:root{
-  --bg-deep:#050912;
-  --grad:radial-gradient(1200px 900px at 20% -10%, rgba(110,220,255,.12), transparent 60%),
-          radial-gradient(900px 800px at 80% -10%, rgba(255,110,160,.12), transparent 65%),
-          radial-gradient(1500px 900px at 50% 110%, rgba(90,150,255,.10), transparent 70%);
-  --ink:#eaf2ff;
-  --muted:#a7b8d8;
-  --accent:#b4e0ff;
+:root {
+  --bg:#050912;
+  --cyan:#7ee8ff;
+  --magenta:#ff477e;
+  --text:#eaf2ff;
+  --muted:#9fb3d8;
+  --card-bg:rgba(255,255,255,0.04);
+  --card-border:rgba(255,255,255,0.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{
-  background:var(--bg-deep);
-  color:var(--ink);
+  background:var(--bg);
+  color:var(--text);
   font-family:Inter,system-ui,sans-serif;
-  scroll-behavior:smooth;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  scroll-behavior:smooth;
 }
 body::before{
   content:"";
   position:fixed;inset:0;z-index:-2;
-  background:var(--grad);
+  background:radial-gradient(1200px 800px at 10% -10%, rgba(120,210,255,.15), transparent 60%),
+             radial-gradient(900px 700px at 90% -10%, rgba(255,110,160,.10), transparent 60%),
+             radial-gradient(1600px 900px at 50% 100%, rgba(100,150,255,.08), transparent 60%);
   filter:saturate(115%);
 }
-.aurora{
-  position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:conic-gradient(from 180deg at 50% 10%,
-    rgba(100,220,255,.10),
-    rgba(255,110,170,.08),
-    rgba(100,180,255,.10),
-    rgba(110,255,210,.05));
-  mix-blend-mode:screen;
-  animation:aurora 16s ease-in-out infinite alternate;
-}
-@keyframes aurora{
-  0%{transform:translateY(0)}
-  100%{transform:translateY(-24px) rotate(.3deg)}
-}
 
-/* Typography */
-:root{
-  --h1:clamp(2.2rem,6.2vw,3.8rem);
-  --h2:clamp(1.6rem,3.2vw,2.2rem);
-  --body:clamp(1.08rem,2.7vw,1.15rem);
-  --lead:clamp(1.1rem,3vw,1.2rem);
-}
-.header{text-align:center;padding:6rem 1.2rem 4rem}
-.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.22em;font-size:.85rem}
+/* HEADER */
+.header{text-align:center;padding:5rem 1.2rem 3rem}
+.kicker{color:var(--muted);text-transform:uppercase;letter-spacing:.2em;font-size:.8rem}
 h1{
-  font-family:"Space Grotesk",Inter,sans-serif;
-  font-weight:700;
-  font-size:var(--h1);
-  margin:.6rem auto 1rem;
-  line-height:1.05;
-  background:linear-gradient(90deg,#fff,#dff4ff 45%,#aee0ff 85%);
+  font-family:"Space Grotesk";font-weight:700;
+  font-size:clamp(2.3rem,6vw,3.2rem);
+  margin:.7rem 0 1rem;
+  background:linear-gradient(90deg,#fff,#aee4ff 45%,#ccefff 90%);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  text-shadow:0 0 24px rgba(170,220,255,.35);
+  text-shadow:0 0 20px rgba(160,220,255,.3);
 }
 .subtitle{
+  font-size:1.05rem;
   color:var(--muted);
-  font-size:var(--lead);
-  max-width:860px;
+  max-width:820px;
   margin:0 auto;
-  line-height:1.8;
+  line-height:1.7;
 }
 
-/* Nav */
-.nav{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:.6rem;
-  margin-top:1.8rem;
-}
+/* NAV */
+.nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:1.6rem}
 .nav a{
-  color:#e8f4ff;
-  text-decoration:none;
-  font-size:.95rem;
-  padding:.4rem .7rem;
-  border-bottom:1px solid #ffffff22;
-  transition:opacity .25s;
+  text-decoration:none;color:#def3ff;
+  padding:.45rem .9rem;
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:999px;
+  font-size:.9rem;
+  transition:all .3s ease;
 }
-.nav a:hover{opacity:.8}
+.nav a:hover{background:rgba(255,255,255,0.08);border-color:var(--cyan)}
 
-/* Sections */
-.section{
-  padding:4rem 1.2rem;
-  max-width:1100px;
-  margin:0 auto;
-}
+/* SECTIONS */
+.section{padding:3.4rem 1.2rem;max-width:1050px;margin:0 auto}
 .section h2{
   font-family:"Space Grotesk";
+  font-size:clamp(1.5rem,3.2vw,2.1rem);
   font-weight:600;
-  font-size:var(--h2);
+  color:var(--cyan);
+  text-shadow:0 0 8px rgba(126,232,255,.4);
   margin-bottom:1rem;
-  color:#e9f7ff;
-  text-shadow:0 0 10px rgba(160,210,255,.25);
 }
 .section .eyebrow{
-  color:var(--muted);
   text-transform:uppercase;
   letter-spacing:.18em;
-  font-size:.8rem;
-  margin-bottom:.35rem;
+  color:var(--muted);
+  font-size:.78rem;
+  margin-bottom:.3rem;
 }
-.p{font-size:var(--body);line-height:1.9;margin:.9rem 0}
-hr.sep{
-  border:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#ffffff2b 20%,#ffffff3a 50%,transparent);
-  margin:2rem 0;
+.capsule{
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:16px;
+  padding:1.2rem 1rem 1.3rem;
+  box-shadow:0 8px 22px rgba(0,0,0,.4),0 0 16px rgba(126,232,255,.15);
+  margin:1rem 0;
+  transition:transform .3s ease, box-shadow .3s ease;
 }
+.capsule:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,.45),0 0 22px rgba(126,232,255,.25);
+}
+.p{font-size:1.04rem;line-height:1.9;margin:.6rem 0}
+hr.sep{border:0;height:1px;background:linear-gradient(90deg,transparent,#ffffff33 20%,#ffffff40 50%,transparent);margin:2rem 0}
 
-/* Flowchart */
+/* FLOWCHART */
 .flow-wrap{
-  margin-top:1.8rem;
-  border:none;
-  border-radius:22px;
-  padding:1rem;
+  margin-top:1.6rem;
+  border-radius:20px;
   background:rgba(255,255,255,.02);
+  padding:1rem;
   overflow-x:auto;
 }
-.flow{
-  width:100%;
-  max-width:980px;
-  height:600px;
-  margin:0 auto;
-  display:block;
-}
+.flow{width:100%;max-width:960px;height:auto;margin:0 auto;display:block}
 .node circle{
-  fill:rgba(15,30,55,.8);
-  stroke:#c8eaff;
-  stroke-width:1.8px;
-  filter:drop-shadow(0 0 8px rgba(150,210,255,.4));
+  fill:rgba(15,30,55,.85);
+  stroke:var(--cyan);
+  stroke-width:2px;
+  filter:drop-shadow(0 0 6px rgba(130,220,255,.3));
 }
 .node text{fill:#fff;font-size:13px;font-weight:600}
-.node .sub{fill:#e1efff;font-size:11px;font-weight:500}
-.link{
-  fill:none;
-  stroke:#a5d6ff;
-  stroke-width:2.1px;
-  opacity:.9;
-  filter:drop-shadow(0 0 4px rgba(150,200,255,.3));
-}
-.link--return{stroke:#e6eeff;opacity:.55}
-.legend{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:.7rem;
-  margin-top:.8rem;
-  color:#dfeeff;
-  font-size:.9rem;
-}
+.node .sub{fill:#cce9ff;font-size:11px}
+.link{fill:none;stroke:var(--cyan);stroke-width:1.8px;opacity:.85}
+.link--return{stroke:#ff8fb1;opacity:.55}
+.legend{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:.8rem;color:#dfeeff;font-size:.85rem}
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+/* FOOTER */
+footer{text-align:center;color:var(--muted);padding:2.6rem 1rem 3rem;border-top:1px solid rgba(255,255,255,.08);margin-top:2rem}
 
-/* Footer */
-footer{
-  text-align:center;
-  color:#a7b8d8;
-  padding:3rem 1.2rem 4rem;
-  border-top:1px solid #ffffff18;
-  margin-top:3rem;
-}
-
-/* MOBILE FIX — Larger flowchart but scrollable */
+/* MOBILE */
 @media(max-width:900px){
-  .flow{height:auto;width:150%;max-width:none;margin-left:-25%;}
-}
-@media(max-width:480px){
-  .flow{height:auto;width:180%;max-width:none;margin-left:-40%;}
+  .capsule{padding:1rem}
+  .p{font-size:1.02rem}
+  .flow{min-width:120%}
 }
 </style>
 </head>
 
 <body>
-<div class="aurora" aria-hidden="true"></div>
-<!-- (BODY CONTENT SAME AS BEFORE) -->
-<!-- You can keep all your previous <header>, <main>, and <footer> content. -->
-</body>
-</html>
-
-
-<body>
-<div class="aurora" aria-hidden="true"></div>
-
 <header class="header">
   <div class="kicker">Nocturnal Nappers • BramHacks</div>
   <h1>OpenOrbit</h1>
   <p class="subtitle">
-    OpenOrbit is a Canadian-led initiative to unify satellite and ground-based networks into one cooperative data-sharing system. It bridges space and earth infrastructure, transforming underused orbital capacity into accessible, sustainable intelligence for industries, researchers, and governments worldwide.
+    🛰️ OpenOrbit is a cooperative low Earth orbit data network created in Canada to connect satellites, ground stations, and industries into one shared system. It promotes fair access, innovation, and global transparency while turning unused orbital potential into meaningful data for every sector.
   </p>
   <nav class="nav">
-    <a href="#exec">Summary</a>
-    <a href="#network">Network Flow</a>
+    <a href="#exec">Overview</a>
+    <a href="#network">Flow</a>
     <a href="#arch">Architecture</a>
-    <a href="#canada">Canada’s Role</a>
+    <a href="#canada">Canada</a>
     <a href="#impact">Applications</a>
     <a href="#policy">Safeguards</a>
     <a href="#end">Conclusion</a>
@@ -216,23 +152,30 @@ footer{
 </header>
 
 <main>
-<section id="exec" class="section reveal">
+<section id="exec" class="section">
   <div class="eyebrow">Executive Summary</div>
-  <h2>The next phase of LEO data access</h2>
-  <p class="p">
-    Low Earth orbit satellites produce enormous volumes of Earth observation data, yet only a small fraction is downlinked or shared efficiently. The lack of a unified communication and economic model leaves valuable insights stranded in orbit. OpenOrbit addresses this gap by creating a shared, peer-to-peer network that connects satellites, ground stations, and end users through an equitable contribution-based system.
-  </p>
-  <p class="p">
-    The concept is simple but transformative: participants who invest in or host infrastructure gain proportional access to the shared data pool. This structure encourages expansion because every new node strengthens the network for everyone else. By combining distributed technology and transparent governance, OpenOrbit replaces isolated competition with collective progress.
-  </p>
+  <h2>Reimagining how LEO data connects the world 🌍</h2>
+  <div class="capsule">
+    <p class="p">
+      Satellites orbit Earth every few minutes, collecting massive amounts of environmental and spatial data. Yet only a small portion ever reaches scientists, governments, or companies who could use it. Proprietary systems and fragmented ground coverage prevent efficient use, creating barriers for innovation and global monitoring.
+    </p>
+    <p class="p">
+      OpenOrbit is a new model that invites collaboration instead of competition. Partners contribute satellites, funding, or ground nodes to join the shared system. In return, they gain access to a growing pool of high-quality data. Each addition strengthens the network, improving coverage, reliability, and value for everyone involved.
+    </p>
+  </div>
 </section>
 
-<section id="network" class="section reveal">
+<section id="network" class="section">
   <div class="eyebrow">Network Flow</div>
-  <h2>How information and incentives connect</h2>
-  <p class="p">
-    The OpenOrbit ecosystem forms a continuous cycle between data providers, processors, and consumers. The central hub, OpenOrbit, coordinates standards and governance. Large companies contribute satellites or funding, connecting directly to both the OpenOrbit core and the global data interface. These in turn link to satellite constellations and ground data centers, which handle data transmission and aggregation. The processed information flows through the interface to smaller organizations and startups, ensuring accessibility and affordability across all scales.
-  </p>
+  <h2>How data and collaboration move through OpenOrbit 🔁</h2>
+  <div class="capsule">
+    <p class="p">
+      OpenOrbit acts as a central link that brings together all levels of participants. Large companies contribute funding and satellite resources, connecting directly with OpenOrbit and the shared Data Interface. This interface manages transactions, data validation, and fair access.
+    </p>
+    <p class="p">
+      Satellites and distributed data centers collect information and feed it through the network. Smaller organizations, research teams, and start-ups use the same interface to access data in real time. This ensures that both large and small players benefit equally from the same orbital infrastructure.
+    </p>
+  </div>
 
   <div class="flow-wrap">
     <svg class="flow" viewBox="0 0 1100 520">
@@ -244,7 +187,7 @@ footer{
       <g class="node" transform="translate(260,250)">
         <circle r="56"></circle>
         <text text-anchor="middle" y="-2">Large Companies</text>
-        <text class="sub" text-anchor="middle" y="16">Contributors</text>
+        <text class="sub" text-anchor="middle" y="16">Invest & Operate</text>
       </g>
       <g class="node" transform="translate(840,250)">
         <circle r="56"></circle>
@@ -253,122 +196,95 @@ footer{
       </g>
       <g class="node" transform="translate(430,410)">
         <circle r="54"></circle>
-        <text text-anchor="middle" y="-2">Satellite &</text>
+        <text text-anchor="middle" y="-2">Satellites &</text>
         <text text-anchor="middle" y="16">Data Centers</text>
       </g>
       <g class="node" transform="translate(980,410)">
         <circle r="48"></circle>
         <text text-anchor="middle" y="-2">Smaller</text>
-        <text text-anchor="middle" y="16">Companies</text>
+        <text text-anchor="middle" y="16">Organizations</text>
       </g>
-      <path class="link" d="M 550 147 C 470 170, 360 190, 300 220" />
-      <path class="link link--return" d="M 260 194 C 360 150, 470 130, 550 120" />
-      <path class="link" d="M 315 250 C 470 250, 650 250, 784 250" />
-      <path class="link" d="M 280 300 C 330 350, 370 370, 420 390" />
-      <path class="link" d="M 480 410 C 600 390, 720 330, 804 280" />
-      <path class="link" d="M 896 282 C 930 305, 950 345, 968 380" />
+      <path class="link" d="M550 147C470 170 360 190 300 220" />
+      <path class="link link--return" d="M260 194C360 150 470 130 550 120" />
+      <path class="link" d="M315 250C470 250 650 250 784 250" />
+      <path class="link" d="M280 300C330 350 370 370 420 390" />
+      <path class="link" d="M480 410C600 390 720 330 804 280" />
+      <path class="link" d="M896 282C930 305 950 345 968 380" />
     </svg>
     <div class="legend">
-      <span>OpenOrbit</span><span>Large Companies</span><span>Satellite & Data Centers</span><span>Data Interface</span><span>Smaller Companies</span>
+      <span>🛰️ OpenOrbit</span><span>🏢 Large Companies</span><span>💾 Satellites & Data</span><span>🧠 Interface</span><span>🔬 Smaller Orgs</span>
     </div>
   </div>
 </section>
 
-<section id="arch" class="section reveal">
-  <div class="eyebrow">Architecture</div>
-  <h2>From orbit to insight</h2>
-  <p class="p">
-    OpenOrbit operates through three integrated layers that mirror the journey of data — from its capture in orbit to its delivery to organizations on Earth. Each layer was designed to enhance performance and security without inflating cost or complexity.
-  </p>
-  <p class="p">
-    <strong>Stage 1: Collection</strong><br>
-    Satellites are coordinated under a shared scheduling and data policy framework. Organizations can contribute satellites or observation time, ensuring consistent global coverage. Each satellite follows standardized imaging protocols that protect privacy while maintaining scientific and industrial precision.
-  </p>
-  <p class="p">
-    <strong>Stage 2: Ground Transmission</strong><br>
-    The network of peer ground stations acts as a mesh. Instead of relying on a handful of expensive downlink points, data is captured wherever possible and transmitted through neighboring nodes until it reaches an optimal route. This distributed setup increases usable coverage from roughly ten percent to more than half of each orbit cycle, minimizing idle satellite time and maximizing throughput.
-  </p>
-  <p class="p">
-    <strong>Stage 3: Data Distribution</strong><br>
-    Once collected and validated, the information is uploaded to the OpenOrbit Interface, a unified data layer where users can browse, query, or integrate results directly into their own tools. Large companies access it through APIs for bulk analytics, while smaller users can download or visualize individual datasets through an intuitive portal.
-  </p>
+<section id="arch" class="section">
+  <div class="eyebrow">System Architecture</div>
+  <h2>Three stages from orbit to insight 🚀</h2>
+  <div class="capsule">
+    <p class="p">
+      <strong>Stage 1: Collection</strong><br>
+      Satellites operated by international partners coordinate observation schedules and share tasking. Participants can fund new missions or lease orbital time, providing continuous global coverage. Privacy is protected through built-in hardware limits and encryption standards.
+    </p>
+  </div>
+  <div class="capsule">
+    <p class="p">
+      <strong>Stage 2: Transmission</strong><br>
+      OpenOrbit uses a decentralized peer-to-peer ground network. Data collected by one ground node is replicated and shared through others in near real time. This expands uptime from only 10 percent of an orbit to about 60 percent, drastically improving speed and reliability.
+    </p>
+  </div>
+  <div class="capsule">
+    <p class="p">
+      <strong>Stage 3: Distribution</strong><br>
+      The OpenOrbit interface compiles and visualizes all received data. Large industries can integrate with APIs, while smaller companies and universities use intuitive dashboards. Differential access levels ensure fair use, sustainability, and financial accessibility.
+    </p>
+  </div>
 </section>
 
-<section id="canada" class="section reveal">
+<section id="canada" class="section">
   <div class="eyebrow">Canada’s Role</div>
-  <h2>Why leadership starts here</h2>
-  <p class="p">
-    Canada provides the ideal environment to manage an international cooperative data network. Its regulatory structure encourages technological innovation while maintaining strong commitments to privacy and sustainability. As a politically neutral nation with a proven track record in satellite and remote sensing, Canada can mediate between public, private, and academic stakeholders with credibility and trust.
-  </p>
-  <p class="p">
-    The Canadian Space Agency, existing aerospace contractors, and new startups form the backbone of OpenOrbit’s operational oversight. The system also promotes education and training opportunities for emerging engineers and data scientists, turning space collaboration into domestic economic growth.
-  </p>
+  <h2>Neutral leadership and innovation 🍁</h2>
+  <div class="capsule">
+    <p class="p">
+      Canada is known for its balanced policies, advanced aerospace industry, and data ethics. These make it the ideal country to host OpenOrbit. Through organizations like the CSA and MDA, Canada can provide oversight, licensing, and coordination, ensuring compliance with global norms.
+    </p>
+  </div>
+  <div class="capsule">
+    <p class="p">
+      This model drives new research, creates skilled jobs, and positions Canada as a global leader in sustainable space collaboration. By managing an open system for LEO data, Canada shows how technology can serve both innovation and public good.
+    </p>
+  </div>
 </section>
 
-<section id="impact" class="section reveal">
-  <div class="eyebrow">Applications and Benefits</div>
-  <h2>Turning orbital data into real-world progress</h2>
-  <p class="p">
-    The OpenOrbit framework directly benefits sectors that depend on accurate, real-time spatial information. In agriculture, soil moisture and crop health data guide sustainable farming. Mining operations use orbital imaging for terrain stability and emissions monitoring. Climate researchers gain better models of glacial melt and atmospheric change. Urban planners and logistic companies access updated environmental layers to optimize movement and reduce risk.
-  </p>
-  <p class="p">
-    By creating shared infrastructure and removing redundant proprietary costs, OpenOrbit dramatically reduces barriers for smaller firms and research institutions. Every dataset that passes through the system carries standardized metadata and transparent provenance, ensuring scientific reproducibility and commercial reliability.
-  </p>
+<section id="impact" class="section">
+  <div class="eyebrow">Applications & Benefits</div>
+  <h2>How industries transform with OpenOrbit 🌐</h2>
+  <div class="capsule"><p class="p">🌎 <strong>Climate & Arctic</strong><br>Monitor ice coverage, glacier shifts, emissions, and weather systems for early response and research collaboration.</p></div>
+  <div class="capsule"><p class="p">🌾 <strong>Agriculture</strong><br>Track soil health, crop growth, and land use through imagery analytics, improving yield and resource management.</p></div>
+  <div class="capsule"><p class="p">⛏️ <strong>Mining & Energy</strong><br>Use live imaging to ensure safe extraction, monitor emissions, and detect geological changes before they become costly issues.</p></div>
+  <div class="capsule"><p class="p">🚦 <strong>Urban & Logistics</strong><br>Integrate space data into traffic systems, infrastructure monitoring, and city planning for smarter, more resilient communities.</p></div>
 </section>
 
-<section id="policy" class="section reveal">
-  <div class="eyebrow">Safeguards</div>
-  <h2>Ethics and sustainability in orbit</h2>
-  <p class="p">
-    OpenOrbit was designed with responsibility as a central principle. Image resolution limits and onboard filtering prevent invasive observation of individuals or restricted sites. Data is stored and transferred under encryption, with all transactions logged for accountability. This means privacy is enforced physically and digitally, not just promised by policy.
-  </p>
-  <p class="p">
-    On the sustainability front, every satellite integrated into the system follows strict deorbit and re-entry timelines to avoid adding debris to orbit. The network also includes environmental self-monitoring, helping measure its own footprint while contributing to global observation efforts.
-  </p>
-  <p class="p">
-    Governance is handled through transparent participation agreements, and reputation systems ensure that contributors adhere to community standards. In effect, the rules of cooperation are enforced not by control, but by incentive alignment and technical verification.
-  </p>
+<section id="policy" class="section">
+  <div class="eyebrow">Safeguards & Governance</div>
+  <h2>Responsible space for everyone 🛡️</h2>
+  <div class="capsule"><p class="p">🔒 <strong>Privacy by Hardware</strong><br>All sensors are physically limited to prevent misuse, ensuring that imagery never exceeds privacy-safe resolutions. Encryption secures every link between satellite and user.</p></div>
+  <div class="capsule"><p class="p">♻️ <strong>Sustainability</strong><br>All satellites are built with deorbit protocols, ensuring safe disposal within seven years. This keeps LEO clean and operational for generations to come.</p></div>
+  <div class="capsule"><p class="p">📜 <strong>Transparency</strong><br>Shared audit logs, reputation systems, and open contracts create a verifiable record of all interactions. Cooperation is rewarded, and compliance is tracked fairly across the network.</p></div>
 </section>
 
-<section id="end" class="section reveal">
+<section id="end" class="section">
   <div class="eyebrow">Conclusion</div>
-  <h2>Connecting Earth through cooperation</h2>
-  <p class="p">
-    OpenOrbit demonstrates that data sharing does not require sacrificing privacy or profit. By linking satellites, ground systems, and industries under a single coordinated framework, Canada can turn orbit into a shared infrastructure for human advancement. Each participant strengthens the network, and together they build a foundation for global problem-solving — from climate resilience to sustainable development.
-  </p>
+  <h2>Building a shared future above Earth 🌌</h2>
+  <div class="capsule">
+    <p class="p">
+      OpenOrbit represents a shift in how humanity uses space. It replaces isolation with collaboration and competition with cooperation. By connecting satellites, stations, and industries through shared values, Canada leads a vision where access to data from orbit is a universal right, not a privilege.
+    </p>
+  </div>
 </section>
 </main>
 
 <footer>
   © 2025 OpenOrbit • Nocturnal Nappers — BramHacks • Built in Canada
 </footer>
-
-<script>
-/* reveal on scroll */
-(function(){
-  const els=[...document.querySelectorAll('.reveal')];
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
-    });
-  },{threshold:.12});
-  els.forEach(el=>io.observe(el));
-})();
-/* stars */
-(function(){
-  const N=85;
-  for(let i=0;i<N;i++){
-    const s=document.createElement('span');
-    const size=Math.random()*1.4+.7;
-    Object.assign(s.style,{
-      position:'fixed',zIndex:-1,width:size+'px',height:size+'px',borderRadius:'50%',
-      background:'rgba(255,255,255,'+(0.35+Math.random()*0.55)+')',
-      top:(Math.random()*100)+'%',left:(Math.random()*100)+'%',
-      boxShadow:'0 0 '+(2+Math.random()*6)+'px rgba(180,220,255,.55)',filter:'blur(.25px)'
-    });
-    document.body.appendChild(s);
-  }
-})();
-</script>
 </body>
 </html>
